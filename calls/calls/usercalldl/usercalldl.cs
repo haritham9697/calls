@@ -5,26 +5,28 @@ using System.Web;
 using calls.Models;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 
 
 namespace calls.usercalldl
 {
-    public class usercalldl
+    public class usercaldl
     {
         public List<usercalls> Getcalls()
         {
 
 
             SqlDataReader reader = null;
-            SqlConnection myconnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["myconnection"].ConnectionString);
+            SqlConnection myconnection = new SqlConnection();
+            myconnection.ConnectionString = (System.Configuration.ConfigurationManager.ConnectionStrings["myconnection"].ConnectionString);
             SqlCommand sqlCmd = new SqlCommand();
             List<usercalls> lstcall = new List<Models.usercalls>();
 
 
             sqlCmd.Connection = myconnection;
             sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "Select ";
+            sqlCmd.CommandText = "Select user.userid,user.username,duration.callid,duration.month,duration.duration,category.calltype,category.category,category.specialist from user  join category  on user.userid=category.userid join duration  on duration.callid=category.callid  ";
 
             myconnection.Open();
 
