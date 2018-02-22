@@ -13,12 +13,13 @@ namespace calls.usercalldl
 {
     public class usercaldl
     {
+        SqlConnection myconnection = new SqlConnection();
         public List<usercalls> Getcalls()
         {
 
 
             SqlDataReader reader = null;
-            SqlConnection myconnection = new SqlConnection();
+            
             myconnection.ConnectionString = (System.Configuration.ConfigurationManager.ConnectionStrings["myconnection"].ConnectionString);
             SqlCommand sqlCmd = new SqlCommand();
             List<usercalls> lstcall = new List<Models.usercalls>();
@@ -26,7 +27,7 @@ namespace calls.usercalldl
 
             sqlCmd.Connection = myconnection;
             sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "Select user.userid,user.username,duration.callid,duration.month,duration.duration,category.calltype,category.category,category.specialist from user  join category  on user.userid=category.userid join duration  on duration.callid=category.callid  ";
+            sqlCmd.CommandText = "Select a.userid,a.username,b.callid,b.month,b.duration,c.calltype,c.category,c.specialist from user a join category c on a.userid=c.userid join duration b on b.callid=c.callid ";
 
             myconnection.Open();
 
@@ -38,7 +39,7 @@ namespace calls.usercalldl
                 c = new usercalls();
                 c.userid = Convert.ToInt32(reader.GetValue(0));
                 c.username = reader.GetValue(1).ToString();
-                c.callid = Convert.ToInt32(reader.GetValue(2));
+               c.callid = Convert.ToInt32(reader.GetValue(2));
                 c.month = reader.GetValue(3).ToString();
                 c.duration = reader.GetValue(4).ToString();
                 c.calltype= reader.GetValue(5).ToString();
