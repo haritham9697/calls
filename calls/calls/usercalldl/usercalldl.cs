@@ -5,7 +5,8 @@ using System.Web;
 using calls.Models;
 using System.Data.SqlClient;
 using System.Data;
-using System.Configuration;
+using System.Data.Sql;
+using System.Data.SqlTypes;
 
 
 
@@ -13,23 +14,23 @@ namespace calls.usercalldl
 {
     public class usercaldl
     {
-        SqlConnection myconnection = new SqlConnection();
+        SqlConnection connection = new SqlConnection();
         public List<usercalls> Getcalls()
         {
 
 
             SqlDataReader reader = null;
             
-            myconnection.ConnectionString = (System.Configuration.ConfigurationManager.ConnectionStrings["myconnection"].ConnectionString);
+            connection.ConnectionString = (System.Configuration.ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
             SqlCommand sqlCmd = new SqlCommand();
             List<usercalls> lstcall = new List<Models.usercalls>();
 
 
-            sqlCmd.Connection = myconnection;
+            sqlCmd.Connection = connection;
             sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "Select a.userid,a.username,b.callid,b.month,b.duration,c.calltype,c.category,c.specialist from user a join category c on a.userid=c.userid join duration b on b.callid=c.callid ";
+            sqlCmd.CommandText = "Select a.userid,a.username,b.callid,b.month,b.duration,c.calltype,c.category,c.specialist from [project].[dbo].[user] a join [project].[dbo].[category] c on a.userid=c.userid join [project].[dbo].[duration] b on b.callid=c.callid ";
 
-            myconnection.Open();
+            connection.Open();
 
             reader = sqlCmd.ExecuteReader();
             usercalls c = null;
@@ -39,7 +40,7 @@ namespace calls.usercalldl
                 c = new usercalls();
                 c.userid = Convert.ToInt32(reader.GetValue(0));
                 c.username = reader.GetValue(1).ToString();
-               c.callid = Convert.ToInt32(reader.GetValue(2));
+                c.callid = Convert.ToInt32(reader.GetValue(2));
                 c.month = reader.GetValue(3).ToString();
                 c.duration = reader.GetValue(4).ToString();
                 c.calltype= reader.GetValue(5).ToString();
@@ -49,7 +50,7 @@ namespace calls.usercalldl
                 lstcall.Add(c);
             }
 
-            myconnection.Close();
+            connection.Close();
             return lstcall;
 
 
