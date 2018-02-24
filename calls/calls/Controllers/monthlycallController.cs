@@ -13,10 +13,10 @@ namespace calls.Controllers
     {
         [HttpGet]
         [ActionName("Getcallsbymonth")]
-        public List<monthlycalls> Getcallsbymonth(String month)
+        public List<monthlycalls> Getcallsbymonth(int month)
         {
             monthlycalbl a = new monthlycalbl();
-            return a.Getcallsbymonth( month);
+            return a.Getcallsbymonth(month);
         }
     }
 }

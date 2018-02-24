@@ -9,7 +9,7 @@ namespace calls.monthlycallbl
 {
     public class monthlycalbl
     {
-        public List<monthlycalls> Getcallsbymonth(String month)
+        public List<monthlycalls> Getcallsbymonth(int month)
         {
             monthlycaldl a = new monthlycaldl();
             return a.Getcallsbymonth(month);

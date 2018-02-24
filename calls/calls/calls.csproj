@@ -240,6 +240,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\monthlycallController.cs" />
     <Compile Include="Controllers\usercallController.cs" />
+    <Compile Include="Controllers\usermonthController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -250,6 +251,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\monthlycalls.cs" />
     <Compile Include="Models\usercalls.cs" />
+    <Compile Include="Models\usermonth.cs" />
     <Compile Include="monthlycallbl\monthlycallbl.cs" />
     <Compile Include="monthlycalldl\monthlycalldl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -258,6 +260,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="usercallbl\usercallbl.cs" />
     <Compile Include="usercalldl\usercalldl.cs" />
+    <Compile Include="usermonthbl\usermonthbl.cs" />
+    <Compile Include="usermonthdl\usermonthdl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
