@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using calls.Models;
-using calls.monthlycalldl;
+using monthlycalls.Models;
+using monthlycalls.monthlycallsdl;
 
-namespace calls.monthlycallbl
+namespace monthlycalls.monthlycallbl
 {
     public class monthlycalbl
     {
-        public List<monthlycalls> Getcallsbymonth(int month)
+        public List<monthlycals> Getcallsbymonth(string id)
         {
-            monthlycaldl a = new monthlycaldl();
-            return a.Getcallsbymonth(month);
+            monthlycalsdl a = new monthlycalsdl();
+            return a.Getcallsbymonth(id);
         }
     }
 }

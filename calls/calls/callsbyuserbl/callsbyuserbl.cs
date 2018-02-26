@@ -8,10 +8,10 @@ namespace calls.callsbyuserbl
 {
     public class calsbyuserbl
     {
-        public List<callsbyuser> Getcallsbyuser(int id)
+        public List<callsbyuser> Getcallsbyuser(int i)
         {
             calsbyuserdl a = new calsbyuserdl();
-            return a.Getcallsbyuser(id);
+            return a.Getcallsbyuser(i);
 
     }
     }

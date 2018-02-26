@@ -4,19 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using calls.usermonthbl;
-using calls.Models;
+using usermonth.usermonthbl;
+using usermonth.Models;
 
-namespace calls.Controllers
+namespace usermonth.Controllers
 {
     public class usermonthController : ApiController
     {
         [HttpGet]
         [ActionName("Getcallsbyusermonth")]
-        public List<usermonth> Getcallsbyusermonth(int id, int month)
+        public List<usermonthly> Getcallsbyusermonth(int id,string md)
         {
             usrmonthbl a = new usrmonthbl();
-            return a.Getcallsbyusermonth(id, month);
+            return a.Getcallsbyusermonth(id,md);
         }
     }
 }

@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using calls.Models;
+using usermonth.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.Sql;
 
-namespace calls.usermonthdl
+
+namespace usermonth.usermonthdl
 {
     public class usrmonthdl
     {
         SqlConnection connection = new SqlConnection();
 
-        public List<usermonth> Getcallsbyusermonth(int id,int month)
+        public List<usermonthly> Getcallsbyusermonth(int id,string md)
         {
 
 
@@ -21,29 +22,30 @@ namespace calls.usermonthdl
 
             connection.ConnectionString = (System.Configuration.ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
             SqlCommand sqlCmd = new SqlCommand();
-            List<usermonth> lstcal = new List<Models.usermonth>();
+            List<usermonthly> lstcal = new List<Models.usermonthly>();
 
 
             sqlCmd.Connection = connection;
             sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "Select a.userid,a.username,b.callid,b.month,b.duration,c.calltype,c.category,c.specialist from [project].[dbo].[user] a join [project].[dbo].[category] c on a.userid=c.userid join [project].[dbo].[duration] b on b.callid=c.callid  join [project].[dbo].[month] d on d.month =b.month where a.userid =" + id + " AND d.monthid = "+ month + " ";
+            sqlCmd.CommandText = "Select a.userid,a.username,b.callid,d.monthid,b.month,b.duration,c.calltype,c.category,c.specialist from [project].[dbo].[user] a join [project].[dbo].[category] c on a.userid=c.userid join [project].[dbo].[duration] b on b.callid=c.callid join [project].[dbo].[month] d on d.month =b.month where a.userid =" + id + " AND b.month = "+ md +"";
 
             connection.Open();
 
             reader = sqlCmd.ExecuteReader();
-            usermonth c = null;
+            usermonthly c = null;
 
             while (reader.Read())
             {
-                c = new usermonth();
+                c = new usermonthly();
                 c.userid = Convert.ToInt32(reader.GetValue(0));
                 c.username = reader.GetValue(1).ToString();
                 c.callid = Convert.ToInt32(reader.GetValue(2));
-                c.month = reader.GetValue(3).ToString();
-                c.duration = reader.GetValue(4).ToString();
-                c.calltype = reader.GetValue(5).ToString();
-                c.category = reader.GetValue(6).ToString();
-                c.specialist = reader.GetValue(7).ToString();
+                c.monthid = Convert.ToInt32(reader.GetValue(3));
+                c.month = reader.GetValue(4).ToString();
+                c.duration = reader.GetValue(5).ToString();
+                c.calltype = reader.GetValue(6).ToString();
+                c.category = reader.GetValue(7).ToString();
+                c.specialist = reader.GetValue(8).ToString();
 
                 lstcal.Add(c);
             }
