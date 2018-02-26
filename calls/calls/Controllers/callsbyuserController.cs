@@ -13,10 +13,10 @@ namespace calls.Controllers
     {
         [HttpGet]
         [ActionName("Getcallsbyuser")]
-        public List<callsbyuser> Getcallsbyuser(int i)
+        public List<callsbyuser> Getcallsbyuser(int id)
         {
             calsbyuserbl a = new calsbyuserbl();
-            return a.Getcallsbyuser(i);
+            return a.Getcallsbyuser(id);
 
         }
     }
