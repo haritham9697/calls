@@ -13,7 +13,7 @@ namespace calls.callsbyuserdl
     {
         SqlConnection connection = new SqlConnection();
 
-        public List<callsbyuser> Getcallsbyuser(int i)
+        public List<callsbyuser> Getcallsbyuser(int userid)
         {
 
 
@@ -26,7 +26,7 @@ namespace calls.callsbyuserdl
 
             sqlCmd.Connection = connection;
             sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "Select a.userid,a.username,b.callid,d.monthid,b.month,b.duration,c.calltype,c.category,c.specialist from [project].[dbo].[user] a join [project].[dbo].[category] c on a.userid=c.userid join [project].[dbo].[duration] b on b.callid=c.callid join [project].[dbo].[month] d on d.month =b.month where a.userid =" + i + " ";
+            sqlCmd.CommandText = "Select a.userid,a.username,b.callid,d.monthid,b.month,b.duration,c.calltype,c.category,c.speciality from [project].[dbo].[user] a join [project].[dbo].[category] c on a.userid=c.userid join [project].[dbo].[duration] b on b.callid=c.callid join [project].[dbo].[month] d on d.month =b.month where a.userid =" + userid + " ";
 
             connection.Open();
 
@@ -44,7 +44,7 @@ namespace calls.callsbyuserdl
                 c.duration = reader.GetValue(5).ToString();
                 c.calltype = reader.GetValue(6).ToString();
                 c.category = reader.GetValue(7).ToString();
-                c.specialist = reader.GetValue(8).ToString();
+                c.speciality = reader.GetValue(8).ToString();
 
                 lstcal.Add(c);
             }

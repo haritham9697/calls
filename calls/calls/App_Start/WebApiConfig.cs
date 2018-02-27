@@ -22,8 +22,8 @@ namespace calls
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}/{md}",
-                defaults: new { id = RouteParameter.Optional, md= RouteParameter.Optional}
+                routeTemplate: "api/{controller}/{userid}/{month}",
+                defaults: new { userid = RouteParameter.Optional, month= RouteParameter.Optional}
            
            
             );

@@ -13,10 +13,10 @@ namespace usermonth.Controllers
     {
         [HttpGet]
         [ActionName("Getcallsbyusermonth")]
-        public List<usermonthly> Getcallsbyusermonth(int id,string md)
+        public List<usermonthly> Getcallsbyusermonth(int userid,string month)
         {
             usrmonthbl a = new usrmonthbl();
-            return a.Getcallsbyusermonth(id,md);
+            return a.Getcallsbyusermonth(userid,month);
         }
     }
 }

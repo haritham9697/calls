@@ -28,7 +28,7 @@ namespace calls.usercalldl
 
             sqlCmd.Connection = connection;
             sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "Select a.userid,a.username,b.callid,d.monthid,b.month,b.duration,c.calltype,c.category,c.specialist from [project].[dbo].[user] a join [project].[dbo].[category] c on a.userid=c.userid join [project].[dbo].[duration] b on b.callid=c.callid join [project].[dbo].[month] d on d.month=b.month ";
+            sqlCmd.CommandText = "Select a.userid,a.username,b.callid,d.monthid,b.month,b.duration,c.calltype,c.category,c.speciality from [project].[dbo].[user] a join [project].[dbo].[category] c on a.userid=c.userid join [project].[dbo].[duration] b on b.callid=c.callid join [project].[dbo].[month] d on d.month=b.month ";
 
             connection.Open();
 
@@ -46,7 +46,7 @@ namespace calls.usercalldl
                 c.duration = reader.GetValue(5).ToString();
                 c.calltype = reader.GetValue(6).ToString();
                 c.category = reader.GetValue(7).ToString();
-                c.specialist = reader.GetValue(8).ToString();
+                c.speciality = reader.GetValue(8).ToString();
 
                 lstcall.Add(c);
             }

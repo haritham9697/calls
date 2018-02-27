@@ -15,6 +15,6 @@ namespace calls.Models
         public String duration { get; set; }
         public String calltype { get; set; }
         public String category { get; set; }
-        public String specialist { get; set; }
+        public String speciality { get; set; }
     }
 }

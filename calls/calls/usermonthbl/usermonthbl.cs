@@ -9,10 +9,10 @@ namespace usermonth.usermonthbl
 {
     public class usrmonthbl
     {
-        public List<usermonthly> Getcallsbyusermonth(int id,string md)
+        public List<usermonthly> Getcallsbyusermonth(int userid,string month)
         { 
             usrmonthdl a = new usrmonthdl();
-            return a.Getcallsbyusermonth( id, md);
+            return a.Getcallsbyusermonth( userid, month);
         }
     }
 }
