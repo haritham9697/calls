@@ -17,8 +17,7 @@ namespace monthlycalls.monthlycallsdl
 
         public List<monthlycals> Getcallsbymonth(string month)
         {
-            try
-            {
+            
                 {
                     SqlDataReader reader = null;
 
@@ -56,15 +55,11 @@ namespace monthlycalls.monthlycallsdl
                     return lstcal;
                 }
             }
-            catch
-            {
-                throw new Exception("value is null");
-            }
            
             
 
 
 
-        }
+        
     }
 }
